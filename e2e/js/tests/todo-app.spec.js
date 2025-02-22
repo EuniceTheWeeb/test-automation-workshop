@@ -107,3 +107,4 @@ test('add multiple todo items', async ({ page }) => {
   locator = page.locator('.todo-item:nth-child(2)');
   await expect(locator).toHaveText(/Buy eggs/);
 });
+

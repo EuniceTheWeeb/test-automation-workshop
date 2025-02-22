@@ -22,6 +22,21 @@ app.post("/todos", async (req, res) => {
   }
 });
 
+// Delete tasks that has been marked completed
+app.post("/todos/clear-completed", async (req, res) => {
+  try {
+    await ToDo.destroy({
+      where: {
+        completed: true,
+      },
+    });
+
+    res.json({ message: "Completed Tasks Deleted" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Read (GET) all tasks
 app.get("/todos", async (req, res) => {
   try {
